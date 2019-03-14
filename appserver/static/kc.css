@@ -1,0 +1,118 @@
+.kc {
+    position: relative;
+    width: 1200px;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#image_overlay_panel .image{
+    background: transparent 50% 50% no-repeat url('../Splunk_TA_ES-xtras/images/kc_00.png');
+    background-size: 100% 100%; -ms-background-size: 100% 100%; -o-background-size: 100% 100%; -moz-background-size: 100% 100%; -webkit-background-size: 100% 100%; 
+    background-position: center center;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    width: 1200px;
+    height: 350px;
+}
+.singleValue {
+   font-size: 3.1em;
+   font-weight: bold;
+   color: whitesmoke;
+}
+
+.container {
+   text-align: center;
+   font-size: 3.1em;
+   font-weight: bold;
+   border:2px solid transparent;
+   width:115px; 
+   height:52px;
+   color: whitesmoke;
+   opacity: 0.5;
+}
+
+#image_overlay_panel #kc1_up {
+   position: absolute;
+   top: 60px;
+   left: 42px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc2_up {
+   position: absolute;
+   top: 60px;
+   left: 210px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc3_up {
+   position: absolute;
+   top: 60px;
+   left: 379px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc4_up {
+   position: absolute;
+   top: 60px;
+   left: 548px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc5_up {
+   position: absolute;
+   top: 60px;
+   left: 716px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc6_up {
+   position: absolute;
+   top: 60px;
+   left: 883px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc7_up {
+   position: absolute;
+   top: 60px;
+   left: 1052px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc1_down {
+   position: absolute;
+   top: 236px;
+   left: 42px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc2_down {
+   position: absolute;
+   top: 236px;
+   left: 210px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc3_down {
+   position: absolute;
+   top: 236px;
+   left: 379px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc4_down {
+   position: absolute;
+   top: 236px;
+   left: 548px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc5_down {
+   position: absolute;
+   top: 236px;
+   left: 716px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc6_down {
+   position: absolute;
+   top: 236px;
+   left: 883px;
+   line-height: 50px;
+}
+#image_overlay_panel #kc7_down {
+   position: absolute;
+   top: 236px;
+   left: 1052px;
+   line-height: 50px;
+}

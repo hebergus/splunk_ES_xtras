@@ -1,0 +1,237 @@
+<form stylesheet="Splunk_TA_ES-xtras:kc.css" script="Splunk_TA_ES-xtras:kc.js">
+  <label>Cyber Threat Intelligence Posture</label>
+  <search id="kc_up_base">
+    <query>index=notable | fields search_name | stats count by search_name | rename count as hits, search_name as title_xxx  | join max=0 type=left title [| inputlookup cs_to_kc_mappings_kv | fields - setup]</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <search id="kc_down_base">
+    <query>| inputlookup cs_to_kc_mappings_kv | search [| rest splunk_server=local count=0 /services/saved/searches | where match('action.correlationsearch.enabled', "1|[Tt]|[Tt][Rr][Uu][Ee]") | where disabled=0 | fields title | rename title as title_xxx] |</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <search id="kc_down_total_base">
+    <query>| inputlookup cs_to_kc_mappings_kv | search [| rest splunk_server=local count=0 /services/saved/searches | where match('action.correlationsearch.enabled', "1|[Tt]|[Tt][Rr][Uu][Ee]") | fields title | rename title as title_xxx] |</query>
+     <earliest>$field1.earliest$</earliest>
+     <latest>$field1.latest$</latest>
+  </search>
+  <search id="kc1_up" base="kc_up_base">
+    <query>| fields kc1_recon, hits | search kc1_recon=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc1_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc2_up" base="kc_up_base">
+    <query>| fields kc2_weapon, hits | search kc2_weapon=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc2_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc3_up" base="kc_up_base">
+    <query>| fields kc3_deliver, hits | search kc3_deliver=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc3_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc4_up" base="kc_up_base">
+    <query>| fields kc4_exploit, hits | search kc4_exploit=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc4_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc5_up" base="kc_up_base">
+    <query>| fields kc5_instal, hits | search kc5_instal=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc5_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc6_up" base="kc_up_base">
+    <query>| fields kc6_c2c, hits | search kc6_c2c=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc6_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc7_up" base="kc_up_base">
+    <query>| fields kc7_action, hits | search kc7_action=1 | stats sum(hits) as count</query>
+    <progress>
+      <eval token="kc7_up">if(isnull($result.count$),0,$result.count$)</eval>
+    </progress>
+  </search>
+  <search id="kc1_down" base="kc_down_base">
+    <query>| fields kc1_recon | stats count(kc1_recon) as count</query>
+    <progress>
+      <set token="kc1_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc2_down" base="kc_down_base">
+    <query>| fields kc2_weapon | stats count(kc2_weapon) as count</query>
+    <progress>
+      <set token="kc2_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc3_down" base="kc_down_base">
+    <query>| fields kc3_deliver | stats count(kc3_deliver) as count</query>
+    <progress>
+      <set token="kc3_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc4_down" base="kc_down_base">
+    <query>| fields kc4_exploit | stats count(kc4_exploit) as count</query>
+    <progress>
+      <set token="kc4_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc5_down" base="kc_down_base">
+    <query>| fields kc5_instal | stats count(kc5_instal) as count</query>
+    <progress>
+      <set token="kc5_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc6_down" base="kc_down_base">
+    <query>| fields kc6_c2c | stats count(kc6_c2c) as count</query>
+    <progress>
+      <set token="kc6_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc7_down" base="kc_down_base">
+    <query>| fields kc7_action | stats count(kc7_action) as count</query>
+    <progress>
+      <set token="kc7_down">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc1_down_total" base="kc_down_total_base">
+    <query>| fields kc1_recon | stats count(kc1_recon) as count</query>
+    <progress>
+      <set token="kc1_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc2_down_total" base="kc_down_total_base">
+    <query>| fields kc2_weapon | stats count(kc2_weapon) as count</query>
+    <progress>
+      <set token="kc2_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc3_down_total" base="kc_down_total_base">
+    <query>| fields kc3_deliver | stats count(kc3_deliver) as count</query>
+    <progress>
+      <set token="kc3_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc4_down_total" base="kc_down_total_base">
+    <query>| fields kc4_exploit | stats count(kc4_exploit) as count</query>
+    <progress>
+      <set token="kc4_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc5_down_total" base="kc_down_total_base">
+    <query>| fields kc5_instal | stats count(kc5_instal) as count</query>
+    <progress>
+      <set token="kc5_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc6_down_total" base="kc_down_total_base">
+    <query>| fields kc6_c2c | stats count(kc6_c2c) as count</query>
+    <progress>
+      <set token="kc6_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <search id="kc7_down_total" base="kc_down_total_base">
+    <query>| fields kc7_action | stats count(kc7_action) as count</query>
+    <progress>
+      <set token="kc7_down_total">$result.count$</set>
+    </progress>
+  </search>
+  <!-- Kill Chain Viz Two -->
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel id="image_overlay_panel">
+      <title>CTI Overview</title>
+      <html>
+                <div class="kc">
+                    <div class="image"/>
+                    <div class="container" id="kc1_up">
+            <span>$kc1_up$</span>
+          </div>
+                    <div class="container" id="kc2_up">
+            <span>$kc2_up$</span>
+          </div>
+                    <div class="container" id="kc3_up">
+            <span>$kc3_up$</span>
+          </div>
+                    <div class="container" id="kc4_up">
+            <span>$kc4_up$</span>
+          </div>
+                    <div class="container" id="kc5_up">
+            <span>$kc5_up$</span>
+          </div>
+                    <div class="container" id="kc6_up">
+            <span>$kc6_up$</span>
+          </div>
+                    <div class="container" id="kc7_up">
+            <span>$kc7_up$</span>
+          </div>
+                    <div class="container" id="kc1_down">
+            <span>$kc1_down$/$kc1_down_total$</span>
+          </div>
+                    <div class="container" id="kc2_down">
+            <span>$kc2_down$/$kc2_down_total$</span>
+          </div>
+                    <div class="container" id="kc3_down">
+            <span>$kc3_down$/$kc3_down_total$</span>
+          </div>
+                    <div class="container" id="kc4_down">
+            <span>$kc4_down$/$kc4_down_total$</span>
+          </div>
+                    <div class="container" id="kc5_down">
+            <span>$kc5_down$/$kc5_down_total$</span>
+          </div>
+                    <div class="container" id="kc6_down">
+            <span>$kc6_down$/$kc6_down_total$</span>
+          </div>
+                    <div class="container" id="kc7_down">
+            <span>$kc7_down$/$kc7_down_total$</span>
+          </div>
+                </div>
+            </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <map>
+        <title>CTI Notable Geo-Distribution</title>
+        <search>
+          <query>| inputlookup cs_to_kc_mappings_kv</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="mapping.type">choropleth</option>
+      </map>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>CTI Correlation Searches to Set Up</title>
+      <table>
+        <search>
+          <query>| inputlookup cs_to_kc_mappings_kv | search NOT setup = 1 | fields title_xxx, kc1_recon, kc2_weapon, kc3_deliver, kc4_exploit, kc5_instal, kc6_c2c, kc7_action</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="dataOverlayMode">heatmap</option>
+        <option name="drilldown">none</option>
+        <format type="color" field="TITLE">
+          <colorPalette type="map"></colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>
