@@ -32,7 +32,8 @@ This app installs as any other splunk TA or App, install only on your ES SH. Che
 <br>sed -i 's#name="threat_activity"></view>#name="threat_activity"></view><view name="cyber_threat_intel_posture"></view>#' $SPLUNK_HOME$/etc/apps/SplunkEnterpriseSecuritySuite/local/data/ui/nav/default.xml
 
 <br>2) Map your correlation searches to the kill chain
-<br>The other important point is to make sure to setup your CS and map them to the kill chain stages as you think they should be mapped. To do this, just populate the lookup "cs_to_kc_mappings" (you might have to make the lookup manageble by ES first to be able to see it on the "Lookup Editor". Note: don't mess with the _key field of the lookup
+<br>The other important point is to make sure to setup your CS and map them to the kill chain stages as you think they should be mapped. To do this, just populate the lookup "cs_to_kc_mappings" (you might have to make the lookup manageble by ES first to be able to see it on the "Lookup Editor"), by setting a "1" on each column which represents the stage. Once you are finished don't forget to set the "setup" field of the lookup to "1"
+<br> Note: don't mess with the _key field of the lookup
 
 # Tested
 <br>Only a run with Appinspect (http://dev.splunk.com/view/appinspect/SP-CAAAE9U)
