@@ -1,7 +1,7 @@
 # splunk_ES_xtras
 A Splunk "app" which includes xtras that don't come with ES itself and have been requested by many customers on my years of at Splunk PS
 
-# What it adds?
+# What does it adds?
 At the moment the following items are part of this app:
 - A Cyber Threat Intelligence dashboard that maps the classic "Kill Chain" to both notable hits and correlation searches
 For this to work the following resources are available on the app:
