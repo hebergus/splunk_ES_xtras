@@ -35,6 +35,19 @@ This app installs as any other splunk TA or App, install only on your ES SH. Che
 <br>The other important point is to make sure to setup your CS and map them to the kill chain stages as you think they should be mapped. To do this, just populate the lookup "cs_to_kc_mappings" (you might have to make the lookup manageble by ES first to be able to see it on the "Lookup Editor". Note: don't mess with the _key field of the lookup
 
 # Tested
+<br>Only a run with Appinspect (http://dev.splunk.com/view/appinspect/SP-CAAAE9U)
+<br>Splunk_TA_ES-xtras Report Summary:
+<br>
+<br>       skipped:  0
+<br>       success: 113
+<br>  manual_check: 21
+<br>       failure:  0
+<br>       warning:  0
+<br>         error:  0
+<br>not_applicable: 138
+<br>-------------------
+<br>         Total: 273
+
 <br>Only on my own testbed, so it is to be used at your own risk
 
 # To do
