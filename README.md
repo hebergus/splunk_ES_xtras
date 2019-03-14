@@ -53,6 +53,6 @@ This app installs as any other splunk TA or App, install only on your ES SH. Che
 
 # To do
 Further testing<br>
-Add any other dashboards and improvements<br>
+Add any other dashboards (i.e. CTI Notable Geo-Distribution) and improvements<br>
 Provide defaults for the correlation searches kc mappings<br>
-Upload to Splunkbase
+Upload to Splunkbase<br>
