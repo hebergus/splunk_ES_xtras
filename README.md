@@ -40,7 +40,7 @@ This app installs as any other splunk TA or App, install only on your ES SH. Che
 <br>Splunk_TA_ES-xtras Report Summary:
 <br>
 <br>       skipped:  0
-<br>       success: 113
+<br>       success: 114
 <br>  manual_check: 21
 <br>       failure:  0
 <br>       warning:  0
