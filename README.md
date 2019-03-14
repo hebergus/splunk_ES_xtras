@@ -1,5 +1,6 @@
 # splunk_ES_xtras
-A Splunk "app" which includes xtras that don't come with ES itself and have been requested by many customers on my years of at Splunk PS
+A Splunk "app" which includes xtras that don't come with ES itself and have been requested by many customers on my years of at Splunk PS<br>
+Not yet in splunkbase but working on it
 
 # What does it adds?
 At the moment the following items are part of this app:<br>
@@ -40,3 +41,4 @@ This app installs as any other splunk TA or App, install only on your ES SH. Che
 Further testing<br>
 Add any other dashboards and improvements<br>
 Provide defaults for the correlation searches kc mappings<br>
+Upload to Splunkbase
